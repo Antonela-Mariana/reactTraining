@@ -1,46 +1,47 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import axios from 'axios';
 import ListItem from './ListItem';
 import CocktailDetails from './CocktailDetails';
+import { Switch, Route, Redirect } from "react-router-dom";
+import ImageDetails from "./ImageDetails";
 
-// const NonAlcoholic = () =>{
-//     return (
-//         <div><h1>These are non-alcoholic cocktails!</h1></div>
-//     );
-// }
-
-class NonAlcoholic extends Component{
+class Category extends Component{
     constructor(props) {
+        console.log('prrops', props);
         super(props);
 
         this.state = {
             cocktails: [],
             showDetails: false,
-            selected: null
+            selected: null,
+            type: 'alcoholic'
         };
-        this.handler = this.handler.bind(this)
     }
 
     componentDidMount() {
-        axios.get('https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic')
+        axios.get(this.props.url)
             .then(res => {
                 this.setState({ cocktails: res.data.drinks });
             });
     }
 
     render() {
-        const cocktailsss = this.state.cocktails.map((cocktail, index) => <ListItem cocktail={cocktail} key={index} handler={this.handler} details={this.goToDetails} />)
+        console.log('wwww', this.props.match);
+        const cocktailsss = this.state.cocktails.map((cocktail, index) => <ListItem cocktail={cocktail} key={index} handler={this.handler} details={this.goToDetails}/>)
         return (
             <div>
+                {/* <Switch>
+                    <Route path={`${this.props.match.url}/details`} component={ImageDetails}></Route>
+                </Switch> */}
                 {this.state.showDetails ? <CocktailDetails cocktail={this.state.selected} hide={this.hide} /> : null}
-                <div className="title"><h1>These are non-alcoholic cocktails!</h1></div>
+                <div className="title"><h1>These are {this.props.type} cocktails!</h1></div>
                 <div className="list-container">{cocktailsss}</div>
             </div>
         );
     }
 
     handler = (cocktail) => {
-        console.log('show in non-alcoholic', cocktail);
+        console.log('show in alcoholic', cocktail);
         this.setState({
             ...this.state,
             showDetails: true,
@@ -62,4 +63,4 @@ class NonAlcoholic extends Component{
     }
 }
 
-export default NonAlcoholic;
+export default Category;

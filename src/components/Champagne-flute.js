@@ -34,7 +34,6 @@ class ChampagneFlute extends Component{
     }
 
     handler = (cocktail) => {
-        console.log('show in champagne', cocktail);
         this.setState({
             ...this.state,
             showDetails: true,

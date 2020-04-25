@@ -36,7 +36,6 @@ class CocktailsGlass extends Component{
 
     
     handler = (cocktail) => {
-        console.log('show in cocktail glass', cocktail);
         this.setState({
             ...this.state,
             showDetails: true,

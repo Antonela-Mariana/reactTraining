@@ -7,7 +7,7 @@ const CocktailDetails = (props) =>
         <div className="details-list-item">
             <div className="details-item-left">
                 <button onClick={props.hide}>Hide</button>
-                <img src={props.cocktail.strDrinkThumb} className="details-cocktail-img" onClick={() => <Redirect to="/details-img" />}></img>
+                <img alt='img' src={props.cocktail.strDrinkThumb} className="details-cocktail-img" onClick={() => <Redirect to="/details-img" />}></img>
             </div>
             <div className="details-item-right">
                 <div>{props.cocktail.strDrink}</div>

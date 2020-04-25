@@ -5,7 +5,6 @@ import CocktailDetails from './CocktailDetails';
 
 class Category extends Component{
     constructor(props) {
-        console.log('prrops', props);
         super(props);
 
         this.state = {
@@ -24,8 +23,7 @@ class Category extends Component{
     }
 
     render() {
-        console.log('wwww', this.props.match);
-        const cocktailsss = this.state.cocktails.map((cocktail, index) => <ListItem cocktail={cocktail} key={index} handler={this.handler} details={this.goToDetails}/>)
+        const cocktailsss = this.state.cocktails.map((cocktail, index) => <ListItem cocktail={cocktail} key={index} handler={this.handler}/>)
         return (
             <div>
                 {this.state.showDetails ? <CocktailDetails cocktail={this.state.selected} hide={this.hide} /> : null}
@@ -36,7 +34,6 @@ class Category extends Component{
     }
 
     handler = (cocktail) => {
-        console.log('show in alcoholic', cocktail);
         this.setState({
             ...this.state,
             showDetails: true,
@@ -49,12 +46,6 @@ class Category extends Component{
             ...this.state,
             showDetails: false,
         });
-    }
-
-    goToDetails = () => {
-        let a = `${this.props.match.url}/details`;
-        console.log('ruta', a);
-        //<Redirect to={}></Redirect>
     }
 }
 

@@ -7,7 +7,6 @@ import CocktailDetails from './CocktailDetails';
 class Alcoholic extends Component {
     constructor(props) {
         super(props);
-        console.log('prrops', props);
 
         this.state = {
             cocktails: [],
@@ -26,7 +25,7 @@ class Alcoholic extends Component {
     }
 
     render() {
-        const cocktailsss = this.state.cocktails.map((cocktail, index) => <ListItem cocktail={cocktail} key={index} handler={this.handler} detailsUrl={`${this.props.match.url}`} details={this.goToDetails} />)
+        const cocktailsss = this.state.cocktails.map((cocktail, index) => <ListItem cocktail={cocktail} key={index} handler={this.handler} />)
         return (
             <div>
                 {this.state.showDetails ? <CocktailDetails cocktail={this.state.selected} hide={this.hide} /> : null}
@@ -37,7 +36,6 @@ class Alcoholic extends Component {
     }
 
     handler = (cocktail) => {
-        console.log('show in alcoholic', cocktail);
         this.setState({
             ...this.state,
             showDetails: true,

@@ -3,12 +3,6 @@ import axios from 'axios';
 import ListItem from './ListItem';
 import CocktailDetails from './CocktailDetails';
 
-// const OrdinaryDrinks = () =>{
-//     return (
-//         <div><h1>These are Ordinary Drinks!</h1></div>
-//     );
-// }
-
 class OrdinaryDrinks extends Component{
     constructor(props) {
         super(props);
@@ -40,7 +34,6 @@ class OrdinaryDrinks extends Component{
     }
 
     handler = (cocktail) => {
-        console.log('show in ordinary', cocktail);
         this.setState({
             ...this.state,
             showDetails: true,

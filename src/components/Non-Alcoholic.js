@@ -23,7 +23,7 @@ class NonAlcoholic extends Component{
     }
 
     render() {
-        const cocktailsss = this.state.cocktails.map((cocktail, index) => <ListItem cocktail={cocktail} key={index} handler={this.handler} details={this.goToDetails} />)
+        const cocktailsss = this.state.cocktails.map((cocktail, index) => <ListItem cocktail={cocktail} key={index} handler={this.handler}/>)
         return (
             <div>
                 {this.state.showDetails ? <CocktailDetails cocktail={this.state.selected} hide={this.hide} /> : null}
@@ -34,7 +34,6 @@ class NonAlcoholic extends Component{
     }
 
     handler = (cocktail) => {
-        console.log('show in non-alcoholic', cocktail);
         this.setState({
             ...this.state,
             showDetails: true,
@@ -47,12 +46,6 @@ class NonAlcoholic extends Component{
             ...this.state,
             showDetails: false,
         });
-    }
-
-    goToDetails = () => {
-        let a = `${this.props.match.url}/details`;
-        console.log('ruta', a);
-        //<Redirect to={}></Redirect>
     }
 }
 

@@ -19,7 +19,6 @@ class ImageDetails extends Component {
     }
 
     componentDidMount() {
-        console.log('props id', this.props.match.params.id);
         axios.get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${this.props.match.params.id}`)
             .then(res => {
                 this.setState({ cocktail: res.data.drinks[0] });
@@ -34,7 +33,7 @@ class ImageDetails extends Component {
                 <div>
                     <div className="details-img-list-item">
                         <div className="details-img-item">
-                            <img src={this.state.cocktail.strDrinkThumb} className="details-img"></img>
+                            <img alt='img' src={this.state.cocktail.strDrinkThumb} className="details-img"></img>
                             <p>{this.state.cocktail.strDrink}</p>
                         </div>
                     </div>

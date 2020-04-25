@@ -10,6 +10,7 @@ import NonAlcoholic from './components/Non-Alcoholic';
 import CocktailsGlass from './components/Cocktail-glass';
 import OrdinaryDrinks from './components/Ordinary-drink';
 import ChampagneFlute from './components/Champagne-flute';
+import NotFound from './components/NotFound';
 
 
 
@@ -17,9 +18,7 @@ function App() {
   return (
     <div>
       {/* <List/> */}
-      <h1 className="header">Cocktails</h1>
       <BrowserRouter>
-        <NavBar/>
           <Switch>
             <Route path="/alcoholic" component={Alcoholic}></Route>
             <Route path="/non-alcoholic" component={NonAlcoholic}></Route>
@@ -33,7 +32,8 @@ function App() {
             <Route path="/champagne-flute" component={() => <Category url='https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Champagne_flute' type='Champagne_flute' />}></Route> */}
             <Route path="/details" component={ImageDetails}></Route>
             <Route path="/category" component={Category}></Route>
-            <Route path="/" component={MainPage}></Route>
+            <Route exact path="/" component={MainPage}></Route>
+            <Route component= {NotFound} />
           </Switch>
       </BrowserRouter>
     </div>

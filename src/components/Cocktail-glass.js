@@ -3,11 +3,6 @@ import axios from 'axios';
 import ListItem from './ListItem';
 import CocktailDetails from './CocktailDetails';
 
-// const CocktailsGlass = () =>{
-//     return (
-//         <div><h1>These are cocktail glass!</h1></div>
-//     );
-// }
 
 class CocktailsGlass extends Component{
     constructor(props) {

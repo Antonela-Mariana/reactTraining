@@ -3,12 +3,6 @@ import axios from 'axios';
 import ListItem from './ListItem';
 import CocktailDetails from './CocktailDetails';
 
-// const ChampagneFlute = () =>{
-//     return (
-//         <div><h1>These are Champagne Flute!</h1></div>
-//     );
-// }
-
 class ChampagneFlute extends Component{
     constructor(props) {
         super(props);
@@ -56,6 +50,5 @@ class ChampagneFlute extends Component{
     }
 }
 
-// const ListItem = ({ strDrink }) => <li>{strDrink}</li>
 
 export default ChampagneFlute;

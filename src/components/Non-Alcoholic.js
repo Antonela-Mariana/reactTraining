@@ -3,12 +3,6 @@ import axios from 'axios';
 import ListItem from './ListItem';
 import CocktailDetails from './CocktailDetails';
 
-// const NonAlcoholic = () =>{
-//     return (
-//         <div><h1>These are non-alcoholic cocktails!</h1></div>
-//     );
-// }
-
 class NonAlcoholic extends Component{
     constructor(props) {
         super(props);

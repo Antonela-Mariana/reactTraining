@@ -119,6 +119,29 @@ button {
   padding-top: 3%;;
 }
 
+.details-img-list-item{
+  margin-top: 2%;
+  display: flex;
+  justify-content: center;
+}
+
+.details-img-item{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.details-img-item > p {
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+.details-img-item > img {
+  width: 75%;
+  height: 75%;
+}
+
 /* .details-item >div{
   font-weight: bolder;
 

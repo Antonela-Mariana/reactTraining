@@ -56,6 +56,5 @@ class OrdinaryDrinks extends Component{
     }
 }
 
-// const ListItem = ({ strDrink }) => <li>{strDrink}</li>
 
 export default OrdinaryDrinks;

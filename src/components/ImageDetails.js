@@ -1,48 +1,42 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { Redirect } from "react-router-dom";
 
 
-class ImageDetails extends Component {
-    constructor(props) {
-        super(props);
+function ImageDetails(props) {
 
-        this.state = {
-            cocktail: {},
-            goBack: false
-        }
+    const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${props.match.params.id}`;
+    const [cocktail, setCocktail] = useState({});
+    const [goBack, setGoBack] = useState(false);
+
+    const handleGoBack = () => {
+        setGoBack(true);
     }
 
-    goBack = () => {
-        this.setState({goBack: true});
-        return <Redirect to="/" />
-    }
+    useEffect(
+        () => {
+            axios.get(url)
+                .then(res => {
+                    console.log('response', res.data.drinks[0]);
+                    setCocktail(res.data.drinks[0]);
+                });
+            console.log(`I remove everything that i set above. The current state is ${cocktail}`)
+        }, []);
 
-    componentDidMount() {
-        axios.get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${this.props.match.params.id}`)
-            .then(res => {
-                this.setState({ cocktail: res.data.drinks[0] });
-            });
-    }
-
-    render() {
-        if (this.state.goBack) {
-            return <Redirect to="/" />;
-        } else {
-            return (
-                <div>
-                    <div className="details-img-list-item">
-                        <div className="details-img-item">
-                            <img alt='img' src={this.state.cocktail.strDrinkThumb} className="details-img"></img>
-                            <p>{this.state.cocktail.strDrink}</p>
-                        </div>
-                    </div>
-                    <button onClick={this.goBack}>Back</button>
+    return (
+        <div>
+            {goBack && <Redirect to="/" />}
+            {!goBack && <div className="details-img-list-item">
+                <div className="details-img-item">
+                    <img alt='img' src={cocktail.strDrinkThumb} className="details-img"></img>
+                    <p>{cocktail.strDrink}</p>
                 </div>
-            )
-        }
-    }
-
+            </div>
+            }
+            
+            <button onClick={handleGoBack}>Back</button>
+        </div>
+    )
 }
 
 export default ImageDetails;
